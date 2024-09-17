@@ -1,0 +1,16 @@
+def generate_subsets_with_element(E, x):
+    subsets = []
+    n = len(E)
+    def backtrack(start, current_subset):
+        if x in current_subset:
+            subsets.append(current_subset[:])
+        for i in range(start, n):
+            current_subset.append(E[i])
+            backtrack(i + 1, current_subset)
+            current_subset.pop()
+    backtrack(0, [])
+    return subsets
+E = [2, 3, 4, 5]
+x = 3
+result = generate_subsets_with_element(E, x)
+print("The subsets containing 3:", result)
